@@ -51,12 +51,31 @@ After setting up an Azure resource group for SharePoint agents, you can set up p
 1. Read and accept the pay-as-you-go billing terms of service.
 1. Select **Save**.
 
-### Monitor consumption in Azure Cost Management
 
-To monitor your organization’s consumption of agents with the pay-as-you-go, you can create a budget in Azure Cost Management with [Bicep](/azure/cost-management-billing/costs/quick-create-budget-bicep) and [ARM template](/azure/cost-management-billing/costs/quick-create-budget-template). Budget helps you inform others about their spending to proactively manage costs and monitor how spending progresses over time. You can also set up various types of cost alerts to monitor the consumption. 
+### Billing rates
+
+The following table illustrates the differences in the subscription models for the cost of SharePoint agent usage.
+
+| SharePoint agent feature              | Billing rate | Use in Microsoft 365 Copilot scenarios<sup>1</sup> | Autonomous use |
+|---------------------------------------|--------------|----------------------------------------------------|----------------|
+| Generative answer                     | 2 messages   | No charge                                          | 2 messages     |
+| Tenant graph grounding for messages   | 10 messages  | No charge                                          | 10 messages    |
+
+<sup>1</sup> Interactive use of generative answers, tenant graph grounding and agent actions by authenticated Microsoft 365 Copilot users, in Microsoft 365 apps and services, are included at no extra cost.
+
+- Generative answers: These events are dynamically generated using AI models, such as Generative Pretrained Transformers (GPTs). They can adapt and change based on the context and the knowledge sources they're connected to. They're useful for handling a wide range of topics and providing more flexible and natural interactions.
+
+- Tenant graph grounding for messages: These events provide higher quality grounding for your agents using retrieval-augmented generation (RAG) over your tenant-wide Microsoft Graph, including external data synced into Microsoft Graph through connectors. This results in more relevant and improved responses and ensures that the grounding information is up-to-date. This capability is optional, and you can turn it on or off for each agent.
+  
+> [!NOTE]
+> SharePoint agents are grounded in the tenant graph, so each interaction with a SharePoint agent uses 12 messages (10 messages for tenant graph grounding, and 2 messages for generative answers) to respond to a single complex prompt from the user.
+
+### Monitor consumption in Microsoft Cost Management
+
+To monitor your organization’s consumption of agents with the pay-as-you-go, you can create a budget in Microsoft Cost Management with [Bicep](/azure/cost-management-billing/costs/quick-create-budget-bicep) and [ARM template](/azure/cost-management-billing/costs/quick-create-budget-template). Budget helps you inform others about their spending to proactively manage costs and monitor how spending progresses over time. You can also set up various types of cost alerts to monitor the consumption. 
 Furthermore, you can view your organization’s consumption by:
 
-1. Going to [Azure Cost Management](https://portal.azure.com/#view/Microsoft_Azure_CostManagement/Menu/~/overview/openedBy/AzurePortal). 
+1. Going to [Microsoft Cost Management](https://portal.azure.com/#view/Microsoft_Azure_CostManagement/Menu/~/overview/openedBy/AzurePortal). 
 1. If needed, change the scope to select the subscription that is being used for agents in SharePoint.
 
 #### Adjusting consumption
